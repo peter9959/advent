@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Day1UnitTest/obj/Debug
+/Day1UnitTest/bin/Debug
+/AdventConsole/obj/Debug
+/AdventConsole/bin/Debug
+/AdventConsole/.vs/AdventConsole/v15
