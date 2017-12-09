@@ -11,7 +11,8 @@ namespace AdventConsole.Day1
 {
     public class Day2Solution
     {
-        private string _input = File.ReadAllText(@"../../Input/day2_test_input.txt");
+        private string _input = File.ReadAllText(@"../../Input/day2_input.txt");
+        private string _input2 = File.ReadAllText(@"../../Input/day2_test_input.txt");
 
         public Day2Solution()
         {
@@ -34,47 +35,91 @@ namespace AdventConsole.Day1
 
         public int CalculateFirstAnswer(string input)
         {
-            //1122
-            //var arr = input.ToCharArray();
+            string[] stringLineSeparators = new string[] { "\r\n" };
+            string[] stringTabSeparators = new string[] { "\t" };
+
+            string[] rows = input.Split(stringLineSeparators, StringSplitOptions.None);
 
             int sum = 0;
 
-            //var firstVal = arr[0];
-            //var oldval = new char();
+            for (int i = 0; i < rows.Length; i++)
+            {
+                var values = rows[i].Split(stringTabSeparators, StringSplitOptions.None);
+                var intValues = Array.ConvertAll(values, s => int.Parse(s));
 
-            //for (int i = 0; i < arr.Length; i++)
-            //{
-            //    if (i == 0)
-            //    {
-            //        oldval = arr[i];
-            //        continue;
-            //    }
+                int highestval = intValues.Max();
+                int lowestval = intValues.Min();
 
-            //    if (oldval == arr[i])
-            //    {
-            //        int val = int.Parse(arr[i].ToString());
-            //        sum += val;
-            //    }
-            //    else
-            //    {
-            //        oldval = arr[i];
-            //    }
+                sum += (highestval - lowestval);
 
-            //    //last
-            //    if (i == arr.Length - 1)
-            //    {
-            //        if (firstVal == arr[i])
-            //        {
-            //            int val = int.Parse(arr[i].ToString());
-            //            sum += val;
-            //        }
-            //    }
-            //}
+            }
+
 
             return sum;
             //3
         }
 
+        //It sounds like the goal is to find the only two numbers in each row where one evenly divides the other 
+        //- that is, where the result of the division operation is a whole number.They would like you to find 
+        //those numbers on each line, divide them, and add up each line's result.
 
+        //For example, given the following spreadsheet:
+
+        //5 9 2 8
+        //9 4 7 3
+        //3 8 6 5
+        //In the first row, the only two numbers that evenly divide are 8 and 2; the result of this division is 4.
+        //In the second row, the two numbers are 9 and 3; the result is 3.
+        //In the third row, the result is 2.
+        //In this example, the sum of the results would be 4 + 3 + 2 = 9.
+        public double CalculateSecondAnswer()
+        {
+            return CalculateSecondAnswer(_input);
+        }
+
+        private double CalculateSecondAnswer(string input)
+        {
+            string[] stringLineSeparators = new string[] { "\r\n" };
+            string[] stringTabSeparators = new string[] { "\t" };
+
+            string[] rows = input.Split(stringLineSeparators, StringSplitOptions.None);
+
+            var sum = 0.00;
+
+            for (int i = 0; i < rows.Length; i++) //rows.Length
+            {
+                var values = rows[i].Split(stringTabSeparators, StringSplitOptions.None);
+                var intValues = Array.ConvertAll(values, s => int.Parse(s));
+                var intvalueLength = intValues.Length;
+
+                double sumDivide = 0;
+
+                for (int j = 0; j < intvalueLength; j++)
+                {
+                    var currentValue = intValues[j];
+                    var valuesToTestToDivide = intValues.Where((source, index) => index != j).ToArray();
+                    bool done = false;
+
+                    for (int k = 0; k < valuesToTestToDivide.Length; k++)
+                    {
+                        var sumdivideArr = new double[2] { currentValue, valuesToTestToDivide[k] };
+                        sumDivide = sumdivideArr.Max() / sumdivideArr.Min();
+
+                        if (sumDivide % 1 == 0)
+                        {
+                            sum += sumDivide;
+                            done = true;
+                            break;
+                        }
+                    }
+
+                    if (done)
+                        break;
+
+                }
+            }
+
+            return sum;
+        }
     }
 }

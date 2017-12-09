@@ -51,6 +51,7 @@
     <Compile Include="Day1Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Day2Tests.cs" />
+    <Compile Include="Day3Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -60,6 +61,11 @@
       <Project>{88cde3ea-83b4-4908-903f-e5d4c20b96da}</Project>
       <Name>AdventConsole</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Input\day2_input.txt" />
+    <Content Include="Input\day2_test_input.txt" />
+    <Content Include="Input\day2_test_input2.txt" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

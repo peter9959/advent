@@ -16,7 +16,9 @@ namespace AdventConsole
             var day1testSolution2 = day1SolutionCalculator.CalculateSecondAnswer();
 
             var day2SolutionCalculator = new Day2Solution();
-            var test = day2SolutionCalculator.CalculateFirstAnswer();
+            var day2Solution = day2SolutionCalculator.CalculateFirstAnswer();
+            var day2Solution2 = day2SolutionCalculator.CalculateSecondAnswer();
+
 
 
             Console.WriteLine("**********************************");
@@ -29,9 +31,12 @@ namespace AdventConsole
             Console.WriteLine(day1testSolution2);
 
             Console.WriteLine("**********************************");
+            Console.WriteLine("Day 2");
 
 
-            Console.WriteLine(test);
+            Console.WriteLine(day2Solution);
+            Console.WriteLine(day2Solution2);
+
 
             Console.ReadLine();
         }
