@@ -9,6 +9,11 @@ namespace AdventConsole.Day1
     public class Day3Solution
     {
         const int _input = 265149;
+
+        //bottomright = 265225
+        //rows = 515
+
+        //265149
         //        Each square on the grid is allocated in a spiral pattern starting at a location marked 1 and then counting up while spiraling outward.For example, the first few squares are allocated like this:
 
         //17  16  15  14  13
@@ -32,29 +37,84 @@ namespace AdventConsole.Day1
 
         public int CalculateFirstAnswer(int input)
         {
+
+            if (input == 1)
+                return 0;
+
+            int rows = 0;
+            
+            //find number of rows
+            //x^2 > input
+
+            int start = 1;
+
+            while (Math.Pow(start, 2) < input)
+            {
+                start += 2;
+            }
+
+            //number of rows
+            rows = start;
+
+            int bottomRightCorner = (int)Math.Pow(rows, 2);
+
+            var row = 0;
+            var col = 0;
+            //find row number is at
+            int reverseStepsToNumber = bottomRightCorner - input; //13
+            int numberAtStartOfBottomRow = bottomRightCorner - (rows - 1); //21
+            int numberAtStartofFirstRow = numberAtStartOfBottomRow - (rows - 1); //17
+            int numberAtEndOfFirstRow = numberAtStartofFirstRow - (rows - 1); //13
+
+            if (input > numberAtStartOfBottomRow)
+            {
+                row = rows;
+                col = 1 + (input - numberAtStartOfBottomRow);
+            }
+            else if (input > numberAtStartofFirstRow)
+            {
+                int stepsToNumber = input - numberAtStartofFirstRow;
+                row = stepsToNumber + 1;
+                col = 1;
+            }
+            else if (input > numberAtEndOfFirstRow)
+            {
+                row = 1;
+                col = rows - (input - numberAtEndOfFirstRow);
+            }
+            else
+            {
+                row = 1 + (numberAtEndOfFirstRow - input);
+                col = rows;
+            }
+
             int sum = 0;
+            
+            var middle = Math.Abs(rows / 2) + 1;
 
-            //string[] stringLineSeparators = new string[] { "\r\n" };
-            //string[] stringTabSeparators = new string[] { "\t" };
+            
 
-            //string[] rows = input.Split(stringLineSeparators, StringSplitOptions.None);
+            int stepsToMiddleRow = Math.Abs(middle - row);
+            int stepsToMiddleCol = Math.Abs(col - middle);
+
+            if (row == middle)
+            {
+                sum = stepsToMiddleCol;
+            }
+            else if (col == middle)
+            {
+                sum = stepsToMiddleRow;
+            }
+            else
+            {
+                sum = stepsToMiddleRow + stepsToMiddleCol;
+
+            }
 
 
-            //for (int i = 0; i < rows.Length; i++)
-            //{
-            //    var values = rows[i].Split(stringTabSeparators, StringSplitOptions.None);
-            //    var intValues = Array.ConvertAll(values, s => int.Parse(s));
-
-            //    int highestval = intValues.Max();
-            //    int lowestval = intValues.Min();
-
-            //    sum += (highestval - lowestval);
-
-            //}
 
 
             return sum;
-            //3
         }
     }
 }
