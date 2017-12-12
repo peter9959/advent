@@ -22,6 +22,14 @@ namespace AdventConsole
             var day3SolutionCalculator = new Day3Solution();
             var day3Solution = day3SolutionCalculator.CalculateFirstAnswer();
 
+            var day4SolutionCalculator = new Day4Solution();
+            var day4Solution = day4SolutionCalculator.CalculateFirstAnswer();
+
+
+            var day5SolutionCalculator = new Day5Solution();
+            var day5Solution = day5SolutionCalculator.CalculateFirstAnswer();
+
+
             Console.WriteLine("**********************************");
             Console.WriteLine("Day 1");
 
@@ -43,6 +51,15 @@ namespace AdventConsole
 
             Console.WriteLine(day3Solution);
 
+            Console.WriteLine("**********************************");
+            Console.WriteLine("Day 4");
+
+            Console.WriteLine(day4Solution);
+
+            Console.WriteLine("**********************************");
+            Console.WriteLine("Day 5");
+
+            Console.WriteLine(day5Solution);
 
             Console.ReadLine();
         }
