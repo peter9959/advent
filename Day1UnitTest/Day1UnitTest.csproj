@@ -68,6 +68,12 @@
     <Content Include="Input\day2_input.txt" />
     <Content Include="Input\day2_test_input.txt" />
     <Content Include="Input\day2_test_input2.txt" />
+    <Content Include="Input\day3_test_input.txt" />
+    <Content Include="Input\day4_input.txt" />
+    <Content Include="Input\day4_test_input.txt" />
+    <Content Include="Input\day4_test_input2.txt" />
+    <Content Include="Input\day5_input.txt" />
+    <Content Include="Input\day5_test_input.txt" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

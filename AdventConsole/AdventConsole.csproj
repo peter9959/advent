@@ -56,6 +56,9 @@
   <ItemGroup>
     <Content Include="Input\day2_input.txt" />
     <Content Include="Input\day2_test_input.txt" />
+    <Content Include="Input\day4_input.txt" />
+    <Content Include="Input\day5_input.txt" />
+    <Content Include="Input\day5_test_input.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

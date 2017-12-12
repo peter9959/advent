@@ -11,3 +11,5 @@
 /AdventConsole/packages
 /AdventConsole/obj/Release
 /.vs
+/AdventConsole/bin/Release
+/Day1UnitTest/bin/Release
