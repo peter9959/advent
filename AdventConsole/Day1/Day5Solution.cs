@@ -9,8 +9,8 @@ namespace AdventConsole.Day1
 {
     public class Day5Solution
     {
-        private string _input = File.ReadAllText(@"../../Input/day5_input.txt");
-        private string _input2 = File.ReadAllText(@"../../Input/day5_test_input.txt");
+        private string _input = File.ReadAllText(@"c:\temp\day5_input.txt");
+        //private string _input2 = File.ReadAllText(@"../../Input/day5_test_input.txt");
         //        For example, consider the following list of jump offsets:
 
         //0
@@ -43,48 +43,68 @@ namespace AdventConsole.Day1
 
             int sum = 0;
 
-            var sum2 = DoStuff(0);
-            
-            //do stuff
-            int DoStuff(int inIndex)
+            int inIndex = 0;
+            while (inIndex >= 0 && inIndex <= intValues.Length - 1)
             {
-                if (inIndex <= intValues.Length - 1)
-                {
-                    var val = intValues[inIndex];
-                    //jump
-                    intValues[inIndex] += 1;
+                var val = intValues[inIndex];
 
-                    var localNextIndex = inIndex + val;
-                    sum += 1;
+                intValues[inIndex] += 1;
 
-                    if(sum < 63000)
-                        DoStuff(localNextIndex);
+                var localNextIndex = inIndex + val;
+                sum += 1;
 
-                }
-
-                return sum;
+                inIndex = localNextIndex;
             }
 
+            return sum;
+        }
 
+        //Now, the jumps are even stranger: after each jump, if the offset was three or more, 
+        //instead decrease it by 1. Otherwise, increase it by 1 as before.
 
+        //Using this rule with the above example, the process now takes 10 steps, and the offset values 
+        //after finding the exit are left as 2 3 2 3 -1.
 
+        //How many steps does it now take to reach the exit?
+        public int CalculateSecondAnswer()
+        {
+            return CalculateSecondAnswer(_input);
+        }
+        public int CalculateSecondAnswer(string input)
+        {
+            string[] stringLineSeparators = new string[] { "\r\n" };
+            string[] stringTabSeparators = new string[] { " " };
 
+            string[] rows = input.Split(stringLineSeparators, StringSplitOptions.None);
+            var intValues = Array.ConvertAll(rows, s => int.Parse(s));
 
-            //for (int i = 0; i < rows.Length; i++)
-            //{
-            //    var values = rows[i].Split(stringTabSeparators, StringSplitOptions.None);
-            //    var intValues = Array.ConvertAll(values, s => int.Parse(s));
+            int sum = 0;
 
-            //    int highestval = intValues.Max();
-            //    int lowestval = intValues.Min();
+            int inIndex = 0;
+            while (inIndex >= 0 && inIndex <= intValues.Length - 1)
+            {
+                var val = intValues[inIndex];
 
-            //    sum += (highestval - lowestval);
+                if (val >= 3 || val <= -3)
+                {
+                    if(val >= 0)
+                        intValues[inIndex] -= 1;
+                    else
+                    {
+                        intValues[inIndex] += 1;
+                    }
+                }
+                else
+                {
+                    intValues[inIndex] += 1;
+                }
+                var localNextIndex = inIndex + val;
+                sum += 1;
 
-            //}
-
+                inIndex = localNextIndex;
+            }
 
             return sum;
-            //3
         }
     }
 }

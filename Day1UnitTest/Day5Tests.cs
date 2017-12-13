@@ -14,5 +14,13 @@ namespace Day1UnitTest
 
             Assert.AreEqual(5, solution);
         }
+
+        [TestMethod]
+        public void Day5Solution2Test1()
+        {
+            var solution = new Day5Solution().CalculateSecondAnswer();
+
+            Assert.AreEqual(10, solution);
+        }
     }
 }

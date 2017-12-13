@@ -13,3 +13,7 @@
 /.vs
 /AdventConsole/bin/Release
 /Day1UnitTest/bin/Release
+/AdventConsole/bin/x64/Release
+/AdventConsole/obj/x64/Release
+/AdventConsole/bin/x64/Debug
+/AdventConsole/obj/x64/Debug
